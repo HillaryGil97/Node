@@ -1,6 +1,9 @@
-const helpers = require ('./helpers')
+const fs = require('fs')
+const operations = require ('./operations')
 console.log('Hola mundo')
 
-const total = helpers (2,2)
+const total = operations.sum (2,2)
+const totalRes = operations.resta(5,4)
+console.log(`Total suma: ${total}\nTotal resta: ${totalRes}`)
 
-console.log(`Total : ${total}`)
+fs.writeFileSync('./archivo.txt', '')

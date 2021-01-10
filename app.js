@@ -1,12 +1,28 @@
-const fs = require('./files')
-const operations = require ('./operations')
-console.log('Hola mundo')
+fetch('https://rickandmortyapi.com/api/character/?page=19')
+    .then(response => {
+        console.log(response)
+        return response.json()
+    })
+    .then(data => console.log(data.results))
+    .catch(err => console.log(`No se pudo broh UmU ${err}`))
 
-const total = operations.sum (2,2)
-const totalRes = operations.resta(5,4)
-console.log(`Total suma: ${total}\nTotal resta: ${totalRes}`)
+/*fetch('http://example.com/movies.json')
+  .then(response => response.json())
+  .then(data => console.log(data));*/
 
-fs.escribirSyn('./archivo.txt')
-fs.escribir('./archivo2.txt', 'Si weee :v')
-fs.leer('./archivo2.txt')
-fs.borrar('./archivo.txt')
+/*async function getCharacters () {
+    const response = await (await fetch('https://rickandmortyapi.com/api/character/?page=19')).json()
+    //const data = await response.json()
+    console.log(response)
+}*/
+
+const getCharacters = async () => {
+    try {
+        const response = await (await fetch('https://rickandmortyapi.com/api/character/?page=19')).json()
+        console.log(response)
+    } catch (error) {
+        console.log(`No se pudo broh UmU ${error}`)
+    }
+}
+
+getCharacters()
